@@ -11,9 +11,9 @@ use Dq\DqDispatch\UserServer;
 class TestCard extends Testcase
 {
 
-    protected $secret = 'vBTqzIqGSbX5YKa4mUZIp%5%2mgJEOmHilnw!wHAiZYz1Iq&BjSEIAvu0z&&fvdo';
+    protected $secret = 'xxxxx';
 
-    protected $appKey = 'c1bd14579d9cd51910360832bcd3454b';
+    protected $appKey = 'xxx';
 
     /**
      * 创建订单
@@ -22,9 +22,9 @@ class TestCard extends Testcase
     public function testGetCardInfo()
     {
         $data = [
-            'batchNo' => '1096527',
+            'batchNo' => 'XXXX',
         ];
-        $dqService = new Dispatch(Card::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
+        $dqService = new Dispatch(Card::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://XXXX-api-test.XXXX.cn"]);
         $result = $dqService->getBatchInfo($data) ?? [];
         $this->assertArrayHasKey('data', $result);
     }
@@ -33,18 +33,18 @@ class TestCard extends Testcase
     {
         $data = [
             'srcId' => time(),
-            'batchNo' => '1096527',
+            'batchNo' => 'xxx',
             'num' => 1,
             'totalAmount' => 1 * 100,
             'realPay' => 1 * 100,
             'freight' => 1 * 100,
             'receive' => [
-                'name' => "汪书凯",
-                'phone' => "18501369837",
+                'name' => "XX",
+                'phone' => "18x013xxxxx",
                 'province' => "北京",
                 'city' => "北京市",
                 'district' => "朝阳区",
-                'address' => "东坝",
+                'address' => "xx",
             ]
         ];
         $dqService = new Dispatch(Card::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
@@ -55,15 +55,15 @@ class TestCard extends Testcase
     public function testExchange()
     {
         $data = [
-            'batchNo' => '1096527',
-            'cardNo' => '1096527000001',
-            'cardPwd' => 'MNCN-DW5R-KPER-FZRY',
+            'batchNo' => 'XX',
+            'cardNo' => 'XXX',
+            'cardPwd' => 'XXXX',
             'cycle' => [],//	配送周期频率，周期购类型卡片必填
             'realPay' => 1 * 100,
             'freight' => 1 * 100,
             'receive' => [
-                'name' => "汪书凯",
-                'phone' => "18501369837",
+                'name' => "XXX",
+                'phone' => "XXXXXX",
                 'province' => "北京",
                 'city' => "北京市",
                 'district' => "朝阳区",
@@ -78,9 +78,9 @@ class TestCard extends Testcase
     public function testCardQuery()
     {
         $data = [
-            'batchNo' => '1096527',
-            'cardNo' => '1096527000001',
-            'cardPwd' => 'MNCN-DW5R-KPER-FZRY',
+            'batchNo' => 'XX',
+            'cardNo' => 'XXX',
+            'cardPwd' => 'XXXX',
         ];
         $dqService = new Dispatch(Card::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
         $result = $dqService->queryCardInfo($data) ?? [];
@@ -92,7 +92,7 @@ class TestCard extends Testcase
         $data = [
             'current' => 1,
             'size' => 100,
-            'tenantId_eq' => 041735,
+            'tenantId_eq' => 'xxxx',
         ];
         $dqService = new Dispatch(Card::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
         $result = $dqService->queryCardGoods($data) ?? [];
@@ -114,7 +114,7 @@ class TestCard extends Testcase
     public function testOrderInfo()
     {
         $data = [
-            'orderId' => 'CE09920211103191844299477415',
+            'orderId' => 'xxxxx',
         ];
         $dqService = new Dispatch(Order::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
         $result = $dqService->orderInfo($data) ?? [];
@@ -124,7 +124,7 @@ class TestCard extends Testcase
     public function testOrderCancel()
     {
         $data = [
-            'orderId' => 'CE09920211103191844299477415',
+            'orderId' => 'xxxxxx',
         ];
         $dqService = new Dispatch(Order::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
         $result = $dqService->cancelOrder($data) ?? [];
@@ -134,7 +134,7 @@ class TestCard extends Testcase
     public function testGetUserInfoMobile()
     {
         $data = [
-            'mobile' => '18501369837',
+            'mobile' => 'xxxxxxx',
         ];
         $dqService = new Dispatch(UserServer::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
         $result = $dqService->getUserInfoByMobile($data) ?? [];
