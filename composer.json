@@ -1,0 +1,23 @@
+{
+    "name": "vincent/dq-sdk",
+    "autoload": {
+        "psr-4": {
+            "Dq\\DqDispatch\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wangshukai",
+            "email": "wangshukai@mengniu.com"
+        }
+    ],
+    "require": {
+        "hanson/foundation-sdk": "^5.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dq\\DqDispatch\\Tests\\": "tests/"
+        }
+    }
+}
