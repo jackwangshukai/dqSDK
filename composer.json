@@ -1,5 +1,5 @@
 {
-    "name": "vincent/dq-sdk",
+    "name": "wangshukai/dq-sdk",
     "autoload": {
         "psr-4": {
             "Dq\\DqDispatch\\": "src/"
