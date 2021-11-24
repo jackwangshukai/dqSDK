@@ -31,7 +31,13 @@ class ServiceProvider implements ServiceProviderInterface
         // 用户收货地址
         $pimple['address'] = function ($pimple) {
             $config = $pimple->getConfig();
-            return new UserServer($config);
+            return new UserAddress($config);
+        };
+
+        // 线下门店相关
+        $pimple['item'] = function ($pimple) {
+            $config = $pimple->getConfig();
+            return new Item($config);
         };
     }
 }
