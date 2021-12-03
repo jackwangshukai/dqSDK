@@ -8,6 +8,7 @@ use Hanson\Foundation\Foundation;
  * @property Card $card
  * @property UserServer $user
  * @property UserAddress $address
+ * @property item $item
  *
  * Class dq
  * @package wangshukai/dq-sdk

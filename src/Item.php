@@ -43,4 +43,14 @@ class Item extends Api
     }
 
 
+
+    /**通过详细地址或者经纬度查询可履约店铺
+     * @throws Exception\DqDispatchException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function lbsStore(array $params)
+    {
+        return $this->request('/item/api/info/lbsStore', $params);
+
+    }
 }
