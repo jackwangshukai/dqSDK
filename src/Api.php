@@ -57,8 +57,8 @@ class Api extends AbstractAPI
 
     public function checkErrorAndThrow($result)
     {
-        if (!$result || $result['code'] != 200) {
-            throw new DqDispatchException($result['msg'], $result['code']);
+        if (!$result) {
+            throw new DqDispatchException('返回返回数据为空', 500);
         }
     }
 
