@@ -3,6 +3,7 @@
 namespace Dq\DqDispatch;
 
 use Dq\DqDispatch\Exception\DqDispatchException;
+use GuzzleHttp\Exception\RequestException;
 use Hanson\Foundation\AbstractAPI;
 use GuzzleHttp\Handler\CurlHandler;
 use Psr\Http\Message\RequestInterface;
@@ -49,10 +50,20 @@ class Api extends AbstractAPI
         $option = ['headers' => $headerArr];
         $option = array_merge($option, $jsonData);
         $http = $this->getHttp();
-        $response = $http->getClient()->request($httpMethod, $uri, $option);
-        $result = json_decode(strval($response->getBody()), true);
-        $this->checkErrorAndThrow($result);
-        return $result;
+        try {
+            $response = $http->getClient()->request($httpMethod, $uri, $option);
+            $result = json_decode(strval($response->getBody()), true);
+            $this->checkErrorAndThrow($result);
+            return $result;
+        }
+        catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                $result = json_decode(strval($e->getResponse()->getBody()), true);
+                $this->checkErrorAndThrow($result);
+                return $result;
+            }
+
+        }
     }
 
     public function checkErrorAndThrow($result)

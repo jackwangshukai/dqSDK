@@ -3,6 +3,7 @@
 namespace Dq\Dispatch\test;
 
 use Dq\DqDispatch\Dispatch;
+use Dq\DqDispatch\Item;
 use PHPUnit\Framework\TestCase;
 use Dq\DqDispatch\Card;
 use Dq\DqDispatch\Order;
@@ -138,6 +139,16 @@ class TestCard extends Testcase
         ];
         $dqService = new Dispatch(UserServer::class, ['debug' => true, 'appKey' => $this->appKey, 'appSecret' => $this->secret, 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
         $result = $dqService->getUserInfoByMobile($data) ?? [];
+        $this->assertArrayHasKey('data', $result);
+    }
+
+    public function testGetBarCode(){
+        $data = [
+            'barcode' => '8020219981',
+            'appId' => '4467157',
+        ];
+        $dqService = new Dispatch(Item::class, ['debug' => true, 'appKey' => 'xx', 'appSecret' => 'xx', 'gatewayUrl' => "https://holly-api-test.mengniu.cn"]);
+        $result = $dqService->storeProductBarcode($data) ?? [];
         $this->assertArrayHasKey('data', $result);
     }
 }
