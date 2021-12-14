@@ -55,8 +55,7 @@ class Api extends AbstractAPI
             $result = json_decode(strval($response->getBody()), true);
             $this->checkErrorAndThrow($result);
             return $result;
-        }
-        catch (RequestException $e) {
+        } catch (RequestException $e) {
             if ($e->hasResponse()) {
                 $result = json_decode(strval($e->getResponse()->getBody()), true);
                 $this->checkErrorAndThrow($result);
